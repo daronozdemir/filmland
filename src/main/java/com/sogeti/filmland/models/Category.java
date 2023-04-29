@@ -23,5 +23,4 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Subscription> subscriptions;
 
-    // getters and setters
 }

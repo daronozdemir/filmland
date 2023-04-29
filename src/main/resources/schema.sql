@@ -1,9 +1,9 @@
-CREATE TABLE Customer (
-  id INTEGER NOT NULL AUTO_INCREMENT;,
-  password VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL.
-  PRIMARY KEY (id)
-);
+--CREATE TABLE Customer (
+--  id INTEGER NOT NULL AUTO_INCREMENT;,
+--  password VARCHAR(255) NOT NULL,
+--  email VARCHAR(255) NOT NULL.
+--  PRIMARY KEY (id)
+--);
 
 --CREATE TABLE Subscription (
 --  subscription_id INTEGER PRIMARY KEY,

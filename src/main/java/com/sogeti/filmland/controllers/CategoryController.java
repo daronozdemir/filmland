@@ -1,31 +1,22 @@
 package com.sogeti.filmland.controllers;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.sogeti.filmland.models.Category;
-import com.sogeti.filmland.models.CategoryDto;
-import com.sogeti.filmland.models.Customer;
-import com.sogeti.filmland.models.JsonDataResponse;
+
+import com.sogeti.filmland.models.*;
 import com.sogeti.filmland.repository.CategoryRepository;
 import com.sogeti.filmland.repository.CustomerRepository;
 import com.sogeti.filmland.repository.SubscriptionRepository;
+import com.sogeti.filmland.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("categories")
@@ -71,9 +62,10 @@ public class CategoryController {
         response.put("availableCategories", availableCategories);
         response.put("subscribedCategories", subscribedCategoryDtos);
 
-        JsonNode jsonResponse = objectMapper.valueToTree(response);
 
-        return new JsonDataResponse<>("200", "List of available and subscribed categories", jsonResponse);
+        return new JsonDataResponse<>("200", "List of categories for: "+ customer.getEmail(), objectMapper.valueToTree(response));
 
     }
+
+
 }

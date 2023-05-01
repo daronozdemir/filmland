@@ -4,11 +4,13 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Data
+@Builder
 public class Subscription {
 
     @Id
@@ -16,6 +18,8 @@ public class Subscription {
     private Long id;
 
     private LocalDate startDate;
+
+    private LocalDate paymentDate;
 
     private Integer remainingContent;
 
@@ -26,5 +30,9 @@ public class Subscription {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @ManyToMany(mappedBy = "sharedSubscriptions")
+    private Set<Customer> sharedWithCustomers;
+
 
 }

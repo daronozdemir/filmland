@@ -23,14 +23,5 @@ public class Customer {
 
     private String password;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Subscription subscription;
-
-    @ManyToMany
-    @JoinTable(
-            name = "shared_subscriptions",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "subscription_id"))
-    private Set<Subscription> sharedSubscriptions;
 
 }

@@ -58,6 +58,7 @@ public class SubscriptionController {
 
         subscription.getSharedWithCustomers().add(sharedWithCustomer);
         subscriptionRepository.save(subscription);
+
         return new JsonResponse("Success", "Subscription shared with customer");
     }
 }

@@ -31,7 +31,12 @@ public class Subscription {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToMany(mappedBy = "sharedSubscriptions")
+
+    @ManyToMany
+    @JoinTable(
+            name = "shared_subscriptions",
+            joinColumns = @JoinColumn(name = "subscription_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private Set<Customer> sharedWithCustomers;
 
 

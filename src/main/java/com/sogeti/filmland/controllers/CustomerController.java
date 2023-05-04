@@ -6,10 +6,12 @@ import com.sogeti.filmland.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sogeti.filmland.models.Customer;
 
 @RestController
+@RequestMapping("auth")
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;

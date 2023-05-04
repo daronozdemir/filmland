@@ -27,7 +27,7 @@ public class PaymentService {
 
     public JsonResponse subscribeToCategory(String email, String categoryName) {
 
-        Customer customer = customerRepository.findByEmail(email);
+        Customer customer = customerRepository.findByEmail(email).orElseThrow();
         if (customer == null) {
             return new JsonResponse("Failed", "Invalid Email");
         }

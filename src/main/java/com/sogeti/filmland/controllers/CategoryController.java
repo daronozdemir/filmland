@@ -38,7 +38,7 @@ public class CategoryController {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-        Customer customer = customerRepository.findByEmail("admin");
+        Customer customer = customerRepository.findByEmail("john.doe@example.com").orElseThrow();
         List<Category> allCategories = categoryRepository.findAll();
         List<Category>  subscribedCategories = subscriptionRepository.findCategoriesByCustomer_Id(customer.getId());
         List<CategoryDto> availableCategories = new ArrayList<>();

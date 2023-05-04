@@ -36,7 +36,7 @@ public class SubscriptionController {
 
     @PostMapping("/share")
     public JsonResponse shareSubscription(@RequestBody ShareSubscriptionRequest request) {
-        Customer subscriber = customerRepository.findByEmail(request.getSubscriberEmail());
+        Customer subscriber = customerRepository.findByEmail(request.getSubscriberEmail()).orElseThrow();
         if (subscriber == null) {
             return new JsonResponse("Failed", "Invalid subscriber email");
         }
@@ -48,7 +48,7 @@ public class SubscriptionController {
         if (subscription == null) {
             return new JsonResponse("Failed", "Subscriber is not subscribed to this category");
         }
-        Customer sharedWithCustomer = customerRepository.findByEmail(request.getSharedWithEmail());
+        Customer sharedWithCustomer = customerRepository.findByEmail(request.getSharedWithEmail()).orElseThrow();
         if (sharedWithCustomer == null) {
             return new JsonResponse("Failed", "Invalid shared with email");
         }
